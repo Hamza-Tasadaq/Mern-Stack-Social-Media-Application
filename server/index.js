@@ -2,23 +2,26 @@ import express from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import cors from "cors";
+import dotenv from "dotenv";
 import postRoutes from "./routes/posts.js";
 
 const app = express();
+dotenv.config();
 
-app.use(express.json());
-
-// app.use(cors());
-
-const URL =
-  "mongodb+srv://hamzatasadaq:oymhs5U1ohk2JrKm@cluster0.dmnbu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+app.use(bodyParser.json({ limit: "30mb", extended: true }));
+app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
+app.use(cors());
 
 const PORT = process.env.PORT || 5000;
+
+app.use("/", (req, res) => {
+  res.send("Hello From Memories API");
+});
 
 app.use("/posts", postRoutes);
 
 mongoose
-  .connect(URL, {
+  .connect(process.env.URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
