@@ -8,7 +8,7 @@ const app = express();
 
 app.use(express.json());
 
-app.use(cors());
+// app.use(cors());
 
 const URL =
   "mongodb+srv://hamzatasadaq:oymhs5U1ohk2JrKm@cluster0.dmnbu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
