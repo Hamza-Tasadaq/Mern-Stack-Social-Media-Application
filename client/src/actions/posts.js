@@ -52,7 +52,6 @@ const deletePost = (id) => {
 };
 
 const likePost = (id) => {
-  console.log("action like run");
   return async (dispatch) => {
     try {
       const { data } = await api.likePost(id);
