@@ -16,6 +16,8 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Input from "./Input/Input";
 import Icon from "./Icon/Icon";
 
+import { signIn, signUp } from "../../actions/auth";
+
 import { AUTH } from "../../actions/actionTypes";
 
 import useStyles from "./styles";
@@ -40,9 +42,21 @@ function Auth() {
     setShowPassword((prevPasswordState) => !prevPasswordState);
   };
 
-  const handleChange = () => {};
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
 
-  const handleSubmit = () => {};
+  const handleSubmit = (e) => {
+    console.log(isSignup);
+    e.preventDefault();
+
+    if (isSignup) {
+      dispatch(signUp(form, history));
+    } else {
+      console.log("else");
+      dispatch(signIn(form, history));
+    }
+  };
 
   const switchMode = () => {
     setIsSignup((prevIsSignup) => !prevIsSignup);

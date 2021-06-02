@@ -5,6 +5,8 @@ const DELETE_POST = "DELETE_POST";
 const LIKE_POST = "LIKE_POST";
 const AUTH = "AUTH";
 const LOGOUT = "LOGOUT";
+const SIGN_UP = "SIGN_UP";
+const SIGN_IN = "SIGN_IN";
 
 export {
   FETECH_ALL_POSTS,
@@ -14,4 +16,6 @@ export {
   LIKE_POST,
   AUTH,
   LOGOUT,
+  SIGN_UP,
+  SIGN_IN,
 };

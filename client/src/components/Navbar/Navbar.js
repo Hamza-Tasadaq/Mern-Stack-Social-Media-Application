@@ -21,12 +21,10 @@ function Navbar() {
   }, [location]);
 
   const logOut = () => {
-    console.log("logout Chala");
     dispatch({ type: LOGOUT });
     setUser(null);
     history.push("/");
   };
-
   return (
     <AppBar className={classes.appBar} position="static" color="inherit">
       <div className={classes.brandContainer}>
@@ -51,8 +49,8 @@ function Navbar() {
           <div className={classes.profile}>
             <Avatar
               className={classes.purple}
-              alt={user.result.name}
-              src={user.result.imageUrl}
+              alt={user.result?.name}
+              src={user.result?.imageUrl}
             >
               {user.result.name.charAt(0)}
             </Avatar>
