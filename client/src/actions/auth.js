@@ -2,11 +2,9 @@ import * as api from "../api";
 import { SIGN_UP, SIGN_IN, AUTH } from "./actionTypes";
 
 const signIn = (formData, history) => {
-  console.log("object signin");
   return async (dispatch) => {
     try {
       const { data } = await api.signIn(formData);
-      console.log("...res", data);
       dispatch({ type: AUTH, data });
       history.push("/");
     } catch (err) {

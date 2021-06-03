@@ -34,7 +34,7 @@ function Post({ post, setCurrentId }) {
   const user = JSON.parse(localStorage.getItem("profile"));
 
   const Likes = () => {
-    if (post.likes.length > 0) {
+    if (post?.likes?.length > 0) {
       return post.likes.find(
         (like) => like === (user?.result?.googleId || user?.result?._id)
       ) ? (
@@ -52,7 +52,6 @@ function Post({ post, setCurrentId }) {
         </>
       );
     }
-
     return (
       <>
         <ThumbUpAltOutlined fontSize="small" />
@@ -79,15 +78,18 @@ function Post({ post, setCurrentId }) {
         </Typography>
       </div>
       <div className={classes.overlay2}>
-        <Button
-          size="small"
-          style={{ color: "white" }}
-          onClick={() => {
-            setCurrentId(post._id);
-          }}
-        >
-          <MoreHorizIcon fontSize="default" />
-        </Button>
+        {(user?.result?.googleId === post?.creator ||
+          user?.result?._id === post?.creator) && (
+          <Button
+            size="small"
+            style={{ color: "white" }}
+            onClick={() => {
+              setCurrentId(post._id);
+            }}
+          >
+            <MoreHorizIcon fontSize="default" />
+          </Button>
+        )}
       </div>
       <div className={classes.details}>
         <Typography variant="body2" color="textSecondary" component="h2">
@@ -118,15 +120,18 @@ function Post({ post, setCurrentId }) {
         >
           <Likes />
         </Button>
-        <Button
-          size="small"
-          color="primary"
-          onClick={() => {
-            handleDelete(post._id);
-          }}
-        >
-          <DeleteIcon fontSize="small" /> Delete
-        </Button>
+        {(user?.result?.googleId === post?.creator ||
+          user?.result?._id === post?.creator) && (
+          <Button
+            size="small"
+            color="primary"
+            onClick={() => {
+              handleDelete(post._id);
+            }}
+          >
+            <DeleteIcon fontSize="small" /> Delete
+          </Button>
+        )}
       </CardActions>
     </Card>
   );

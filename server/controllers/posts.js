@@ -65,7 +65,6 @@ export const deletePost = async (req, res) => {
 
 // like post
 export const likePost = async (req, res) => {
-  console.log("like post run");
   const { id } = req.params;
   if (!req.userId) {
     return res.json({ message: "Unauthorized User" });
