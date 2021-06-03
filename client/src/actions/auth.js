@@ -17,8 +17,6 @@ const signUp = (formData, history) => {
   return async (dispatch) => {
     try {
       const { data } = await api.signUp(formData);
-
-      console.log(data);
       dispatch({ type: AUTH, data });
       history.push("/");
     } catch (err) {

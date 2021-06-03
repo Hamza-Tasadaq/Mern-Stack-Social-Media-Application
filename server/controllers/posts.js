@@ -74,7 +74,7 @@ export const likePost = async (req, res) => {
     return res.status(404).send(`No post with id: ${id}`);
   }
   try {
-    const post = await postMessage.findById(id);
+    const post = await postMessage.findById(id).lean();
 
     const index = post.likes.findIndex((id) => id === String(req.userId));
 

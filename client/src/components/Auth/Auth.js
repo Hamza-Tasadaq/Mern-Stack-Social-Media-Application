@@ -47,13 +47,11 @@ function Auth() {
   };
 
   const handleSubmit = (e) => {
-    console.log(isSignup);
     e.preventDefault();
 
     if (isSignup) {
       dispatch(signUp(form, history));
     } else {
-      console.log("else");
       dispatch(signIn(form, history));
     }
   };
